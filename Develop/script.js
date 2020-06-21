@@ -21,83 +21,61 @@ var userChoices = [];
 
 //Length
 var passwordLength = window.prompt("Please choose a length between 8 and 128 characters.");
-console.log(
-  " User chose " + passwordLength
-);
-if (passwordLength < minLength || passwordLength > maxLength) {
-  window.alert("You need to pick a valid option. Try again!")
+if (passwordLength >= minLength || passwordLength <= maxLength) {
+    console.log(" User chose " + passwordLength);
+  }
+else (passwordLength < minLength || passwordLength > maxLength) 
+  {
+  window.alert("You need to pick a valid option. Try again!")  
 }
 
 //Lowercase
 var passwordLowercase = window.prompt("Would you like to include lowercase characters? (Y/N)");
-console.log(
-  " User chose " + passwordLowercase
-);
+console.log(" User chose " + passwordLowercase);
 if (passwordLowercase === "Y" || passwordLowercase === "y") {
   typeCount += 1;
   userChoices.push(lowerCase)
-  //include lowerCase;
-  //else if N do not include
-  //else if pick a valid option
 }
-
-
-
 
 //Uppercase
 var passwordUppercase = window.prompt("Would you like to include uppercase characters? (Y/N)");
-console.log(
-  " User chose " + passwordUppercase
-);
+console.log(" User chose " + passwordUppercase);
 if (passwordUppercase === "Y" || passwordUppercase === "y") {
   typeCount += 1;
   userChoices.push(upperCase)
-  //include upperCase
-  //else if N do not include
-  //else if pick a valid option
 }
 
 //Numeric
 var passwordNumeric = window.prompt("Would you like to include numeric characters? (Y/N)");
-console.log(
-  " User chose " + passwordNumeric
-);
+console.log(" User chose " + passwordNumeric);
 if (passwordNumeric === "Y" || passwordNumeric === "y") {
   typeCount += 1;
   userChoices.push(numbers)
-  //include uppercase
-  //else do not include
-  //else pick a valid option
 }
 
 //Special
 var passwordSpecial = window.prompt("Would you like to include special characters? (Y/N)");
-console.log(
-  " User chose " + passwordSpecial
-);
-if (passwordSpecial.toLowerCase() === 'y') {
+console.log(" User chose " + passwordSpecial);
+if (passwordSpecial === "Y" || passwordSpecial === 'y') {
   typeCount += 1;
   userChoices.push(special)
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+ function writePassword() {
+   var password = generatePassword();
+   var passwordText = document.querySelector("#password");
+   passwordText.value = password;
+ }
 
-//   passwordText.value = password;
-
-// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 function writePassword() {
-
   // does the user want upper case -- boolean
   // does the user want lower case -- boolean
   // does the user want specials -- boolean
@@ -105,15 +83,15 @@ function writePassword() {
 
   // how many characters does the user want
   // for each character
-
-  //l___________
+ 
+  
 
   let passwordString = '';
   let count = 0;
   //console.log(userChoices);
   for (let i = 0; i < passwordLength; i++) {
     // -- for each type theyve chosen
-    // pick a type theyve choosen then randomly grab one of its character
+    // pick a type theyve choosen then randomly grab one of its characters
     // get a random char from this array userChoices[count]
     var currentArray = userChoices[count];
     // var randomChar = userChoices[count[Math.floor(Math.random() * userChoices[count].length)]];
@@ -127,13 +105,14 @@ function writePassword() {
       // -- count === 0
       count = 0;
     }
-
-    // for (let t = 0; t < typeCount; t++) {
-    //   // -- -- randomly pick one of those character
-    //   // -- -- put that character in the slot
-    //   // -- -- rinse and repeat
-    // }
+    
   }
+  
   console.log(passwordString);
-
+  return password;
 }
+
+
+
+
+
