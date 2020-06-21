@@ -6,8 +6,7 @@
 //what other function do i need??
 //use arrays for uppers, lowers, numbers, and special characters
 
-
-//arrays
+//arrays & vars
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z"];
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
@@ -17,18 +16,18 @@ var maxLength = 128
 var typeCount = 0
 var userChoices = [];
 
-
-
 //Length
 var passwordLength = window.prompt("Please choose a length between 8 and 128 characters.");
 if (passwordLength >= minLength || passwordLength <= maxLength) {
     console.log(" User chose " + passwordLength);
   }
-else (passwordLength < minLength || passwordLength > maxLength) 
-  {
-  window.alert("You need to pick a valid option. Try again!")  
-}
 
+  //Loop if answer is outside the designated parameters
+  while(passwordLength <= 7 || passwordLength >= 129) {
+    window.alert("Password Length must be between 8 and 128 characters, please enter a valid option.");
+    var passwordLength = window.prompt("Please choose a length between 8 and 128 chracters.");
+  }
+  
 //Lowercase
 var passwordLowercase = window.prompt("Would you like to include lowercase characters? (Y/N)");
 console.log(" User chose " + passwordLowercase);
@@ -61,31 +60,7 @@ if (passwordSpecial === "Y" || passwordSpecial === 'y') {
   userChoices.push(special)
 }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
- function writePassword() {
-   var password = generatePassword();
-   var passwordText = document.querySelector("#password");
-   passwordText.value = password;
- }
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-function writePassword() {
-  // does the user want upper case -- boolean
-  // does the user want lower case -- boolean
-  // does the user want specials -- boolean
-  // does the user want numbers -- boolean
-
-  // how many characters does the user want
-  // for each character
- 
-  
-
+function generatePassword() {
   let passwordString = '';
   let count = 0;
   //console.log(userChoices);
@@ -104,14 +79,23 @@ function writePassword() {
     if (count >= typeCount) {
       // -- count === 0
       count = 0;
-    }
-    
-  }
-  
+    }    
+  }  
   console.log(passwordString);
-  return password;
+  return passwordString;
 }
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
+// // Write password to the #password input
+ function writePassword() {
+   var password = generatePassword();
+   var passwordText = document.querySelector("#password");
+   passwordText.value = password;
+ }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 
