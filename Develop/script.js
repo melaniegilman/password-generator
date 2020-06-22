@@ -21,13 +21,11 @@ var passwordLength = window.prompt("Please choose a length between 8 and 128 cha
 if (passwordLength >= minLength || passwordLength <= maxLength) {
     console.log(" User chose " + passwordLength);
   }
-
-  //Loop if answer is outside the designated parameters
+  //Loop if user input is outside the designated parameters
   while(passwordLength <= 7 || passwordLength >= 129) {
     window.alert("Password Length must be between 8 and 128 characters, please enter a valid option.");
-    var passwordLength = window.prompt("Please choose a length between 8 and 128 chracters.");
+    var passwordLength = window.prompt("Please choose a length between 8 and 128 characters.");
   }
-  
 //Lowercase
 var passwordLowercase = window.prompt("Would you like to include lowercase characters? (Y/N)");
 console.log(" User chose " + passwordLowercase);
@@ -35,7 +33,6 @@ if (passwordLowercase === "Y" || passwordLowercase === "y") {
   typeCount += 1;
   userChoices.push(lowerCase)
 }
-
 //Uppercase
 var passwordUppercase = window.prompt("Would you like to include uppercase characters? (Y/N)");
 console.log(" User chose " + passwordUppercase);
@@ -43,7 +40,6 @@ if (passwordUppercase === "Y" || passwordUppercase === "y") {
   typeCount += 1;
   userChoices.push(upperCase)
 }
-
 //Numeric
 var passwordNumeric = window.prompt("Would you like to include numeric characters? (Y/N)");
 console.log(" User chose " + passwordNumeric);
@@ -51,7 +47,6 @@ if (passwordNumeric === "Y" || passwordNumeric === "y") {
   typeCount += 1;
   userChoices.push(numbers)
 }
-
 //Special
 var passwordSpecial = window.prompt("Would you like to include special characters? (Y/N)");
 console.log(" User chose " + passwordSpecial);
@@ -59,7 +54,17 @@ if (passwordSpecial === "Y" || passwordSpecial === 'y') {
   typeCount += 1;
   userChoices.push(special)
 }
-
+//Loop if user chooses N or n for every question
+while(passwordUppercase === "N" || passwordUppercase === "n" && passwordLowercase === "N" || passwordLowercase === "n" && passwordNumeric === "N" || passwordNumeric ==="n" && passwordSpecial === "N" || passwordSpecial === "n") {
+  window.alert("You must choose at least one parameter");
+  var passwordLength = window.prompt("Please choose a length between 8 and 128 characters.");
+  var passwordLowercase = window.prompt("Would you like to include lowercase characters? (Y/N)");
+  var passwordUppercase = window.prompt("Would you like to include uppercase characters? (Y/N)");
+  var passwordNumeric = window.prompt("Would you like to include numeric characters? (Y/N)");
+  var passwordSpecial = window.prompt("Would you like to include special characters? (Y/N)");
+  break;
+};
+window.alert("Please click 'Generate Password'");
 function generatePassword() {
   let passwordString = '';
   let count = 0;
@@ -93,7 +98,6 @@ var generateBtn = document.querySelector("#generate");
    var passwordText = document.querySelector("#password");
    passwordText.value = password;
  }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
